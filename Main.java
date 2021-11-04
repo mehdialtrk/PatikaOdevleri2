@@ -1,45 +1,30 @@
 import java.util.Scanner;
 
 public class Main {
-    /* Java ile Matematik, Fizik, Kimya, Türkçe, Tarih,Müzik derslerinin sinav puanlarini kullanicidan alan ve
-    ortalamalarini hesaplayip ekrana bastirilan programi yazin.*/
-
-    /*Ayni program içerisinde koşullu ifadeler kullanilarak, eğer kullanicinin ortalamasi 60'dan buyuk ise ekrana
-    "Sinifi Gecti" , küçük ise "Sinifta Kaldi" yazsin.*/
-
 
     public static void main(String[] args) {
+        double tutar,kdvliTutar,kdvTutari;
+        // tutar 0 ile 1000 TL arasında ise KDV oranı=%18
+        double kdvOran=0.18;
+
+        //tutar 1000 TL den buyuk ise KDV oranı= %8
+        double kdvOran2=0.08;
+
+        Scanner sc=new Scanner(System.in);
+
+        System.out.print("Ucret Tutarini Giriniz: ");
+        tutar=sc.nextDouble();
+
+        // Tutar 1000 tl üstünde ise %8 KDV orani ile,1000 Tl nin altinda ise %18 KDV orani ile KDVlendirme
+        double kdv=tutar<1000 ?kdvOran:kdvOran2;
+
+        double dbl=tutar<1000 ? tutar*kdv: tutar*kdv;
+        kdvliTutar=dbl+tutar;
+
+        kdvTutari=tutar*kdv;
+
+        System.out.println("\t   Paranizin KDVsi: "+kdvTutari+" TLdir"+"\nParanizin KDVli Tutari: "+kdvliTutar+" TLdir");
 
 
-        int mat, fizik, kimya, turkce, tarih, muzik;
-
-
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Matematik notunuz: ");
-        mat = sc.nextInt();
-
-        System.out.print("Fizik notunuz: ");
-        fizik = sc.nextInt();
-
-        System.out.print("Kimya notunuz: ");
-        kimya = sc.nextInt();
-
-        System.out.print("Turkce notunuz: ");
-        turkce = sc.nextInt();
-
-        System.out.print("Tarih notunuz: ");
-        tarih = sc.nextInt();
-
-        System.out.print("Muzik notunuz: ");
-        muzik = sc.nextInt();
-
-        int toplam = (mat + fizik + kimya + turkce + tarih + muzik);
-
-        double ort = toplam / 6.0;
-
-
-
-        String str=ort>60 ? "Sinifi Gectiniz..": "Sinifta Kaldiniz...";
-        System.out.println(str);
     }
 }
